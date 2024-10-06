@@ -57,13 +57,21 @@ int main(int argc, char *argv[])
 		
 		if (codigo ==1) //piden la longitd del nombre
 			sprintf (respuesta,"%d",strlen (nombre));
-		else
+		else if(codigo==2)
 			// quieren saber si el nombre es bonito
 			if((nombre[0]=='M') || (nombre[0]=='S'))
 			strcpy (respuesta,"SI");
 			else
 				strcpy (respuesta,"NO");
-			
+		else
+		{
+			p = strtok(NULL, "/");
+			float altura = atof(p);
+			if (altura > 1.70)
+				sprintf(respuesta, "%s: eres alto", nombre);
+			else
+				sprintf(respuesta, "%s: eres bajo", nombre);
+		}
 			// Enviamos la respuesta
 			write (sock_conn,respuesta, strlen(respuesta));
 			
