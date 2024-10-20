@@ -35,10 +35,13 @@
             this.Longitud = new System.Windows.Forms.RadioButton();
             this.Bonito = new System.Windows.Forms.RadioButton();
             this.button1 = new System.Windows.Forms.Button();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.alturaBox = new System.Windows.Forms.TextBox();
+            this.AlturaBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.ContLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,22 +79,21 @@
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.alturaBox);
+            this.groupBox1.Controls.Add(this.AlturaBox);
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Controls.Add(this.Longitud);
             this.groupBox1.Controls.Add(this.Bonito);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.nombre);
-            this.groupBox1.Location = new System.Drawing.Point(13, 137);
+            this.groupBox1.Location = new System.Drawing.Point(42, 128);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(552, 440);
+            this.groupBox1.Size = new System.Drawing.Size(449, 292);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Peticion";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // Longitud
             // 
@@ -119,23 +121,32 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 45);
+            this.button1.Location = new System.Drawing.Point(602, 138);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(190, 63);
+            this.button1.Size = new System.Drawing.Size(187, 65);
             this.button1.TabIndex = 7;
-            this.button1.Text = "Conectar";
+            this.button1.Text = "¿Cuantos servicios?";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(13, 614);
+            this.button3.Location = new System.Drawing.Point(99, 56);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(189, 67);
+            this.button3.Size = new System.Drawing.Size(141, 44);
             this.button3.TabIndex = 8;
-            this.button3.Text = "Desconectar";
+            this.button3.Text = "Conectar";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(83, 465);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(157, 40);
+            this.button4.TabIndex = 9;
+            this.button4.Text = "desconectar";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // radioButton1
             // 
@@ -148,30 +159,39 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Dime si soy alto";
             this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // alturaBox
+            // AlturaBox
             // 
-            this.alturaBox.Location = new System.Drawing.Point(41, 138);
-            this.alturaBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.alturaBox.Name = "alturaBox";
-            this.alturaBox.Size = new System.Drawing.Size(77, 26);
-            this.alturaBox.TabIndex = 10;
+            this.AlturaBox.Location = new System.Drawing.Point(41, 172);
+            this.AlturaBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.AlturaBox.Name = "AlturaBox";
+            this.AlturaBox.Size = new System.Drawing.Size(82, 26);
+            this.AlturaBox.TabIndex = 10;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 105);
+            this.label1.Location = new System.Drawing.Point(37, 142);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 9;
+            this.label1.TabIndex = 11;
             this.label1.Text = "Altura";
+            // 
+            // ContLabel
+            // 
+            this.ContLabel.AutoSize = true;
+            this.ContLabel.Location = new System.Drawing.Point(598, 218);
+            this.ContLabel.Name = "ContLabel";
+            this.ContLabel.Size = new System.Drawing.Size(0, 20);
+            this.ContLabel.TabIndex = 10;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1112, 865);
+            this.Controls.Add(this.ContLabel);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
@@ -182,6 +202,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -193,11 +214,14 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton Longitud;
         private System.Windows.Forms.RadioButton Bonito;
-        private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Button button1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox alturaBox;
+        private System.Windows.Forms.TextBox AlturaBox;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label ContLabel;
     }
 }
 
